@@ -1,0 +1,26 @@
+﻿body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+#spintext-input {
+    width: 100%;
+    height:calc(100vh - 100px);
+    font-family: Consolas,Monaco,monospace;
+    line-height: 150%;
+    font-size: 18px !important;
+    outline: none;
+    border: none;
+    box-shadow: none;
+    transition: none;
+    padding-top: 50px;
+    padding-bottom: 120px;
+}
+
+.tooltip .tooltip-inner { border-radius:0}
+
+.navbar { border-radius:0}
+.navbar .sr-only { display:none;}
+.navbar-xs { min-height:22px;} 
+.navbar-xs .navbar-brand{ padding: 2px 8px;font-size: 14px;line-height: 14px; } 
+.navbar-xs .navbar-nav > li > a { border-right:1px solid #ddd; padding-top: 2px; padding-bottom: 2px; line-height: 16px }
+.navbar-xs .navbar-text {margin-top: 5px;margin-bottom: 2px;}

@@ -1,0 +1,17 @@
+[
+  {
+    "outputFileName": "demo/editor.js",
+    "inputFiles": [
+      "demo/jquery.caret.js",
+      "demo/jquery.selectRange.js",
+      "demo/toHtml.js",
+      "demo/script.js"
+    ]
+  },
+  {
+    "outputFileName": "dist/app.min.js",
+    "inputFiles": [
+      "dist/app.js"
+    ]
+  }
+]
