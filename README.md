@@ -1,4 +1,4 @@
-HalloJoe.Text.Spin
+HalloJoe.Spin
 ==================
 A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text and get variation + min/max word counts.
 
@@ -21,7 +21,7 @@ Todo
 
 ### Usage 1
 ```
-Imports HalloJoe.Text.Spin
+Imports HalloJoe.Spin
 ...
 Dim text = TextSpinner.Spin("A {spin|spin text|text spinner|spintax} component.")
 ...
@@ -29,7 +29,7 @@ Dim text = TextSpinner.Spin("A {spin|spin text|text spinner|spintax} component."
 
 ### Usage 2
 ```
-Imports HalloJoe.Text.Spin
+Imports HalloJoe.Spin
 ...
 Dim spin = "A {spin|spin text|text spinner|spintax} component."
 Dim seed = New Random(DateTime.Now.GetHashCode())
