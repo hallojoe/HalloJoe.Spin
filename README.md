@@ -2,6 +2,10 @@ HalloJoe.Spin
 ==================
 A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text and get variation + min/max word counts.
 
+Important
+-----------
+Typescript versions of the spinner is very much WIP.
+
 Features
 -----------
 * Spin text (flat & nested)
