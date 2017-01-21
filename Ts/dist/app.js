@@ -10,7 +10,7 @@ var SpinTexter;
         function AlternatedText(rnd, level) {
             if (level === void 0) { level = 0; }
             _super.call(this);
-            this._rnd = rnd != null ? rnd : new SpinTexter.Random();
+            this._rnd = rnd != null ? rnd : new SpinTexter.Random(1000);
             this._level = level;
         }
         AlternatedText.prototype.toString = function () {
@@ -36,32 +36,6 @@ var SpinTexter;
         };
         // experimenal, not part of the interface - thinking how to expres shit as json???
         //================================================================================
-        AlternatedText.prototype.toArrayString = function () {
-            //var sb: StringBuilder = new SpinTexter.StringBuilder();
-            //var first: boolean = true;
-            //if(this._level === 0)
-            //    sb.append("[");
-            //else
-            //    sb.append("\", [");
-            //this.forEach(function (el)
-            //{
-            //    if (first)
-            //    {
-            //        sb.append("\"");
-            //    }
-            //    else
-            //        sb.append("\", \"");
-            //    sb.append(el.toArrayString());
-            //    if (first) {
-            //        sb.append("\"");
-            //    }
-            //    if (first) 
-            //        first = false;
-            //});
-            //sb.append("]");
-            //return sb.toString();
-            return this;
-        };
         AlternatedText.prototype.countVariants = function () {
             //var res: number = 0;
             //this.forEach(function (tp) { res += tp.countVariants(); });
@@ -148,34 +122,23 @@ var SpinTexter;
     }(Array));
     SpinTexter.ConcatenetedText = ConcatenetedText;
 })(SpinTexter || (SpinTexter = {}));
-//module SpinTexter
-//{
-//    export class SpinConfig
-//    {
-//        constructor(
-//            random : Random = new Random(),
-//            opening : string = '{',
-//            closing : string = '}',
-//            delimiter : string = '|')
-//        {
-//        }
-//    }
-//    export class SpinCommand extends ParserConfig
-//    {
-//        text: ""
-//    }
-//}
 var SpinTexter;
 (function (SpinTexter) {
     var ParserConfig = (function () {
         function ParserConfig(seed) {
             if (seed === void 0) { seed = -1; }
-            this.random = new SpinTexter.Random(this._seed);
             this.opening = '{';
             this.closing = '}';
             this.delimiter = '|';
-            this._seed = seed;
+            if (seed <= 0)
+                this.reSeed();
+            else
+                this._seed = seed;
+            this.random = new SpinTexter.Random(this._seed);
         }
+        ParserConfig.prototype.reSeed = function () {
+            this._seed = Math.floor(Math.random() * 99999) + 11111;
+        };
         return ParserConfig;
     }());
     SpinTexter.ParserConfig = ParserConfig;
@@ -184,16 +147,17 @@ var SpinTexter;
 (function (SpinTexter) {
     var Random = (function () {
         function Random(seed) {
-            if (seed === void 0) { seed = -1; }
-            if (seed <= 0)
-                seed = Math.floor(Math.random() * 99999) + 11111;
-            this.seed = seed;
+            this._seedStart = seed;
+            //if (this._seedStart <= 0) 
+            //    this._seedStart = Math.floor(Math.random() * 99999) + 11111;
+            this._seed = this._seedStart;
+            console.log(this._seedStart);
         }
         Random.prototype.next = function (min, max) {
             if (min === void 0) { min = 0; }
             if (max === void 0) { max = 0; }
-            this.seed = (this.seed * 9301 + 49297) % 233281; //changed 233280 to 233281 
-            var rnd = this.seed / 233281; // changed 233280 to 233281 
+            this._seed = (this._seedStart * 9301 + 49297) % 233281; //changed 233280 to 233281 
+            var rnd = this._seed / 233281; // changed 233280 to 233281 
             return min + rnd * (max - min + 1);
         };
         Random.prototype.nextInt = function (min, max) {
@@ -244,6 +208,23 @@ var SpinTexter;
     }());
     SpinTexter.SimpleText = SimpleText;
 })(SpinTexter || (SpinTexter = {}));
+//module SpinTexter
+//{
+//    export class SpinConfig
+//    {
+//        constructor(
+//            random : Random = new Random(),
+//            opening : string = '{',
+//            closing : string = '}',
+//            delimiter : string = '|')
+//        {
+//        }
+//    }
+//    export class SpinCommand extends ParserConfig
+//    {
+//        text: ""
+//    }
+//}
 var SpinTexter;
 (function (SpinTexter) {
     var StringBuilder = (function () {
@@ -296,10 +277,10 @@ var SpinTexter;
 (function (SpinTexter) {
     var TextSpinner = (function () {
         function TextSpinner(text, config) {
-            if (config === void 0) { config = new SpinTexter.ParserConfig(); }
             this._part = TextSpinner.ParsePart(text, 0, text.length, config);
         }
         TextSpinner.ParsePart = function (text, startIdx, endIdx, config) {
+            if (config === void 0) { config = new SpinTexter.ParserConfig(-1); }
             var at = new SpinTexter.AlternatedText(config.random), ct = new SpinTexter.ConcatenetedText(), part = null;
             var balance = 0, // amount of unmatched opening brackets            
             i = 0, // index of current char            
@@ -363,9 +344,10 @@ var SpinTexter;
         TextSpinner.prototype.toStructuredString = function () {
             return this._part.toStructuredString();
         };
-        TextSpinner.prototype.toArrayString = function () {
-            return this._part.toArrayString();
-        };
+        //public toArrayString(): Array<any>
+        //{
+        //    return this._part.toArrayString();
+        //}
         TextSpinner.prototype.countVariants = function () {
             return this._part.countVariants();
         };
