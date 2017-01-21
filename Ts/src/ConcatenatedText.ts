@@ -15,36 +15,31 @@
             return sb.toString();
         }
 
-        toArrayString(): Array<any>
-        {
-            return this;
-        }
-
         countVariants(): number
         {
-            //var res: number = 1;
-            //this.forEach(function (tp) { res *= tp.countVariants(); });
-            //return res;
-            var res: number = 1;
-            this.forEach(function (tp)
-            {
-                var counter: number = tp.countVariants();
-                if (res < counter) res *= counter;
-            });
+            let res: number = 1;
+            this.forEach(function (tp) { res = res * tp.countVariants(); });
             return res;
+            //var res: number = 1;
+            //this.forEach(function (tp)
+            //{
+            //    var counter: number = tp.countVariants();
+            //    if (res < counter) res *= counter;
+            //});
+            //return res;
         }
 
         countMinWords(): number
         {
-            var res: number = 1;
-            this.forEach(function (tp) { res += tp.countMinWords(); });
+            let res: number = 0;
+            this.forEach(function (tp) { res = res + tp.countMinWords(); });
             return res;
         }
 
         countMaxWords(): number
         {
-            var res: number = 1;
-            this.forEach(function (tp) { res += tp.countMaxWords(); });
+            let res: number = 0;
+            this.forEach(function (tp) { res = res + tp.countMaxWords(); });
             return res;
         }
 

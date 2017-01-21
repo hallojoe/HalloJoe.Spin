@@ -20,8 +20,7 @@
             return result;
         } 
 
-        public toStructuredString(): string
-        {
+        public toStructuredString(): string {
             var sb: StringBuilder = new SpinTexter.StringBuilder();
             var first: boolean = true;
             sb.append("{");
@@ -33,48 +32,33 @@
             sb.append("}");
             return sb.toString();
         } 
-       
-        // experimenal, not part of the interface - thinking how to expres shit as json???
-        //================================================================================
-
-        public countVariants(): number
-        {
-            //var res: number = 0;
-            //this.forEach(function (tp) { res += tp.countVariants(); });
-            //return res;
-            var res: number = 1;
+               
+        public countVariants(): number {
+            let res: number = 0;
             this.forEach(function (tp) {
-                var counter: number = tp.countVariants();
-                if (res < 100100) res += counter;
+                if (res <= 100000) // stop counting after reaching 100000
+                    res += tp.countVariants();
             });
             return res;
         }
 
-        // todo: make a guy that work for both of these guys...
-
         public countMinWords(): number {
-            var counter = 0;
-            this.forEach(function (tp) {                    
-                var minWords = tp.countMinWords();
-                if (counter === 0)
-                    counter = minWords;
-                if (minWords < counter)
-                    counter = minWords;
+            let counter = 0;
+            this.forEach(function (tp) {                                    
+                let minWords = tp.countMinWords();
+                if (counter === 0) counter = minWords;
+                if (minWords < counter && minWords > 0) counter = minWords;
             });
             return counter;
         }
 
         public countMaxWords(): number {
-            var counter = 0;
+            let counter = 0;
             this.forEach(function (tp) {
-                var maxWords = tp.countMinWords();
-                if (counter === 0)
-                    counter = maxWords;
-                if (maxWords > counter)
-                    counter = maxWords;
+                let maxWords = tp.countMinWords();
+                if (maxWords > counter) counter = maxWords;
             });
             return counter;
-            //return Math.max.apply(null, this);
         }
     }
 }
