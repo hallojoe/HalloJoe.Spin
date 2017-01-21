@@ -44,7 +44,6 @@
     <TypeScriptCompile Include="src\ConcatenatedText.ts" />
     <TypeScriptCompile Include="src\ITextPart.ts" />
     <TypeScriptCompile Include="src\ParserException.ts" />
-    <TypeScriptCompile Include="src\SpinConfig.ts" />
     <TypeScriptCompile Include="src\ParserConfig.ts" />
     <TypeScriptCompile Include="src\Random.ts" />
     <TypeScriptCompile Include="src\SimpleText.ts" />
