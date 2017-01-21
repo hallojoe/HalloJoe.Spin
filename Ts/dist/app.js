@@ -34,28 +34,21 @@ var SpinTexter;
             sb.append("}");
             return sb.toString();
         };
-        // experimenal, not part of the interface - thinking how to expres shit as json???
-        //================================================================================
         AlternatedText.prototype.countVariants = function () {
-            //var res: number = 0;
-            //this.forEach(function (tp) { res += tp.countVariants(); });
-            //return res;
-            var res = 1;
+            var res = 0;
             this.forEach(function (tp) {
-                var counter = tp.countVariants();
-                if (res < 100100)
-                    res += counter;
+                if (res <= 100000)
+                    res += tp.countVariants();
             });
             return res;
         };
-        // todo: make a guy that work for both of these guys...
         AlternatedText.prototype.countMinWords = function () {
             var counter = 0;
             this.forEach(function (tp) {
                 var minWords = tp.countMinWords();
                 if (counter === 0)
                     counter = minWords;
-                if (minWords < counter)
+                if (minWords < counter && minWords > 0)
                     counter = minWords;
             });
             return counter;
@@ -64,13 +57,10 @@ var SpinTexter;
             var counter = 0;
             this.forEach(function (tp) {
                 var maxWords = tp.countMinWords();
-                if (counter === 0)
-                    counter = maxWords;
                 if (maxWords > counter)
                     counter = maxWords;
             });
             return counter;
-            //return Math.max.apply(null, this);
         };
         return AlternatedText;
     }(Array));
@@ -93,29 +83,26 @@ var SpinTexter;
             this.forEach(function (tp) { sb.append(tp.toStructuredString()); });
             return sb.toString();
         };
-        ConcatenetedText.prototype.toArrayString = function () {
-            return this;
-        };
         ConcatenetedText.prototype.countVariants = function () {
-            //var res: number = 1;
-            //this.forEach(function (tp) { res *= tp.countVariants(); });
-            //return res;
             var res = 1;
-            this.forEach(function (tp) {
-                var counter = tp.countVariants();
-                if (res < counter)
-                    res *= counter;
-            });
+            this.forEach(function (tp) { res = res * tp.countVariants(); });
             return res;
+            //var res: number = 1;
+            //this.forEach(function (tp)
+            //{
+            //    var counter: number = tp.countVariants();
+            //    if (res < counter) res *= counter;
+            //});
+            //return res;
         };
         ConcatenetedText.prototype.countMinWords = function () {
-            var res = 1;
-            this.forEach(function (tp) { res += tp.countMinWords(); });
+            var res = 0;
+            this.forEach(function (tp) { res = res + tp.countMinWords(); });
             return res;
         };
         ConcatenetedText.prototype.countMaxWords = function () {
-            var res = 1;
-            this.forEach(function (tp) { res += tp.countMaxWords(); });
+            var res = 0;
+            this.forEach(function (tp) { res = res + tp.countMaxWords(); });
             return res;
         };
         return ConcatenetedText;
@@ -151,7 +138,6 @@ var SpinTexter;
             //if (this._seedStart <= 0) 
             //    this._seedStart = Math.floor(Math.random() * 99999) + 11111;
             this._seed = this._seedStart;
-            console.log(this._seedStart);
         }
         Random.prototype.next = function (min, max) {
             if (min === void 0) { min = 0; }
@@ -189,9 +175,6 @@ var SpinTexter;
         SimpleText.prototype.toStructuredString = function () {
             return this._text;
         };
-        SimpleText.prototype.toArrayString = function () {
-            return [this];
-        };
         SimpleText.prototype.countVariants = function () {
             return 1;
         };
@@ -208,23 +191,6 @@ var SpinTexter;
     }());
     SpinTexter.SimpleText = SimpleText;
 })(SpinTexter || (SpinTexter = {}));
-//module SpinTexter
-//{
-//    export class SpinConfig
-//    {
-//        constructor(
-//            random : Random = new Random(),
-//            opening : string = '{',
-//            closing : string = '}',
-//            delimiter : string = '|')
-//        {
-//        }
-//    }
-//    export class SpinCommand extends ParserConfig
-//    {
-//        text: ""
-//    }
-//}
 var SpinTexter;
 (function (SpinTexter) {
     var StringBuilder = (function () {
@@ -261,9 +227,17 @@ var SpinTexter;
         /// <param name="s"></param>
         /// <returns></returns>
         TextHelper.WordsCount = function (s) {
-            var pattern = "[" + this._seperators.join() + "]";
-            //console.log(pattern);
-            return s.split(new RegExp(pattern, "g")).length;
+            s = s.trim();
+            var pattern = "[" + this.escapeRegExp(this._seperators.join()) + "]";
+            var values = s.split(new RegExp(pattern, "g"));
+            var result = 0;
+            for (var i = 0; i < values.length; i++)
+                if (values[i].trim() !== '')
+                    result += 1;
+            return result;
+        };
+        TextHelper.escapeRegExp = function (s) {
+            return s.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
         };
         /// <summary>
         /// Word seperators
@@ -358,7 +332,8 @@ var SpinTexter;
             return this._part.countMaxWords();
         };
         TextSpinner.Spin = function (text, config) {
-            return new TextSpinner(text, new SpinTexter.ParserConfig(-1)).toString();
+            if (config === void 0) { config = new SpinTexter.ParserConfig(-1); }
+            return new TextSpinner(text, config).toString();
         };
         return TextSpinner;
     }());
