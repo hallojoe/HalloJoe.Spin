@@ -4,13 +4,13 @@ A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text
 
 About
 -----------
-This was originally written in VB, then converted to C# and Typescript. 
+This was originally written in VB, then converted to C# and TypeScript.
 
 Features
 -----------
 * Supports both flat and nested spin text
 * Syntax error handling (Locate missing opening or closing bracket)
-* Supports seed value to reproduce results 
+* Supports seed value to reproduce results (VB/C# versions are not compatible TypeScript version)
 * Counts possible variations 
 * Counts min/max words
 * Super fast
