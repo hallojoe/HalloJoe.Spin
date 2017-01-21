@@ -2,19 +2,22 @@
 {
     export class Random
     {
-        private seed: number;
+        private _seedStart: number;
+        private _seed: number;
 
-        constructor(seed: number = -1)
+        constructor(seed: number)
         {
-            if (seed <= 0) 
-                seed = Math.floor(Math.random() * 99999) + 11111;
-            this.seed = seed;
+            this._seedStart = seed;
+            //if (this._seedStart <= 0) 
+            //    this._seedStart = Math.floor(Math.random() * 99999) + 11111;
+            this._seed = this._seedStart;
+            console.log(this._seedStart);
         }
 
         private next(min: number = 0, max: number = 0): number
         {
-            this.seed = (this.seed * 9301 + 49297) % 233281;    //changed 233280 to 233281 
-            var rnd = this.seed / 233281;                       // changed 233280 to 233281 
+            this._seed = (this._seedStart * 9301 + 49297) % 233281;    //changed 233280 to 233281 
+            var rnd = this._seed / 233281;                       // changed 233280 to 233281 
             return min + rnd * (max - min + 1);
         }
 
