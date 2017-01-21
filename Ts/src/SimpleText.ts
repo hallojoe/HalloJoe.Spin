@@ -25,12 +25,6 @@
             return this._text;
         }
 
-
-        public toArrayString()
-        {
-            return [this];
-        }
-
         public countVariants()
         {
             return 1;
