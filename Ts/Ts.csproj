@@ -27,6 +27,8 @@
     <Content Include="demo\editor.min.js">
       <DependentUpon>editor.js</DependentUpon>
     </Content>
+    <Content Include="demo\test.js" />
+    <Content Include="demo\test.html" />
     <Content Include="demo\index.html" />
     <Content Include="demo\jquery.selectRange.js" />
     <Content Include="demo\spintext.txt" />
