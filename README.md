@@ -4,7 +4,7 @@ A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text
 
 About
 -----------
-This was originally written it was done in VB, then converted to C# and Typescript. 
+This was originally written in VB, then converted to C# and Typescript. 
 
 Features
 -----------
