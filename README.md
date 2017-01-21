@@ -1,25 +1,19 @@
 HalloJoe.Spin
 ==================
-A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text and get variation + min/max word counts.
+A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text, calculate variations and count min/max word counts.
 
-Important
+About
 -----------
-Typescript versions of the spinner is very much WIP.
+This was originally written in VB, then converted to C# and Typescript. 
 
 Features
 -----------
-* Spin text (flat & nested)
-* Count variations and min/max words
-* Seed value to reproduce same results 
+* Supports both flat and nested spin text
 * Syntax error handling (Locate missing opening or closing bracket)
+* Supports seed value to reproduce results 
+* Counts possible variations 
+* Counts min/max words
 * Super fast
-
----
-
-Todo
------------
-* Calculate spin text percentage
-* Make sense of variations when working with large texts
 
 ---
 
