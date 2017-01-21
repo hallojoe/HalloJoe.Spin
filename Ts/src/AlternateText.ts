@@ -8,7 +8,7 @@
         constructor(rnd: Random, level : number = 0) 
         {
             super();
-            this._rnd = rnd != null ? rnd : new Random();
+            this._rnd = rnd != null ? rnd : new Random(1000);
             this._level = level;
         }
 
@@ -36,40 +36,6 @@
        
         // experimenal, not part of the interface - thinking how to expres shit as json???
         //================================================================================
-        public toArrayString(): Array<any> 
-        {
-            //var sb: StringBuilder = new SpinTexter.StringBuilder();
-            //var first: boolean = true;
-            //if(this._level === 0)
-            //    sb.append("[");
-            //else
-            //    sb.append("\", [");
-
-            //this.forEach(function (el)
-            //{
-            //    if (first)
-            //    {
-            //        sb.append("\"");
-            //    }
-            //    else
-            //        sb.append("\", \"");
-
-            //    sb.append(el.toArrayString());
-
-            //    if (first) {
-            //        sb.append("\"");
-            //    }
-
-            //    if (first) 
-            //        first = false;
-                
-            //});
-            //sb.append("]");
-            //return sb.toString();
-
-            return this;
-
-        }
 
         public countVariants(): number
         {
