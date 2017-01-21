@@ -8,7 +8,7 @@
 
         constructor(
             text: string,
-            config: ParserConfig = new ParserConfig())
+            config: ParserConfig)
         {
             this._part = TextSpinner.ParsePart(text, 0, text.length, config);
         }
@@ -17,7 +17,7 @@
             text: string,
             startIdx: number,
             endIdx: number,
-            config: ParserConfig): ITextPart
+            config: ParserConfig = new ParserConfig(-1)): ITextPart
         {            
 
             var at: AlternatedText = new AlternatedText(config.random),
@@ -105,10 +105,10 @@
             return this._part.toStructuredString();
         }
 
-        public toArrayString(): Array<any>
-        {
-            return this._part.toArrayString();
-        }
+        //public toArrayString(): Array<any>
+        //{
+        //    return this._part.toArrayString();
+        //}
 
         public countVariants(): number
         {
