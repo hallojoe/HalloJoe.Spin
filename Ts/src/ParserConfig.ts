@@ -4,23 +4,24 @@
     {
         private _seed: number;
 
+        public random: Random;
+        public opening: string = '{';
+        public closing: string = '}';
+        public delimiter: string = '|';
+
         constructor(seed: number = -1)
         {
-            this._seed = seed;
+            if (seed <= 0)
+                this.reSeed();
+            else
+                this._seed = seed;
+            this.random = new Random(this._seed);
         }
 
-        random: Random = new Random(this._seed);
-        opening: string = '{';
-        closing: string = '}';
-        delimiter: string = '|';
+        public reSeed() {
+            this._seed = Math.floor(Math.random() * 99999) + 11111;
+        }
+        
     }
-
-
-
-    //export class ParserCommand extends ParserConfig {
-    //    super();
-    //    text: ""
-    //}
-
 
 }
