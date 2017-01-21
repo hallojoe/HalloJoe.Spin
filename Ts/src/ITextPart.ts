@@ -4,7 +4,7 @@
     {
         toString(): string;
         toStructuredString(): string;
-        toArrayString(): Array<any>;
+        //toArrayString(): Array<any>;
         countVariants(): number;
         countMinWords(): number;
         countMaxWords(): number;
