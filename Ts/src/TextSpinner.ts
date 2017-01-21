@@ -125,9 +125,9 @@
             return this._part.countMaxWords();
         }
 
-        public static Spin(text: string, config: ParserConfig): string
+        public static Spin(text: string, config: ParserConfig = new ParserConfig(-1)): string
         {
-            return new TextSpinner(text, new ParserConfig(-1)).toString(); 
+            return new TextSpinner(text, config).toString(); 
         }
 
     }
