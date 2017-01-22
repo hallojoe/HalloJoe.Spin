@@ -15,6 +15,35 @@
 <body>
 
 
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="/" class="navbar-brand">HalloJoe.Spin</a>
+                <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#spintext-result-modal">
+                    View result
+                </button>
+
+            </div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
+                <div class="navbar-right">
+
+                    <button type="button" class="btn btn-link navbar-btn" data-toggle="modal" data-target="#spintext-settings-modal"><span class="glyphicon glyphicon-cog"></span></button>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div id="spintext-error" class="alert alert-danger fade hide" role="alert"></div>
+
+    <!-- test tabs....v99-->
     <!--<div class="container">
         <div class="row">
             <div class="col-md-12">
@@ -32,35 +61,6 @@
     </div>-->
 
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="collapsed navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-5" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a href="#" class="navbar-brand">Brand</a>
-                <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#spintext-result-modal">
-                    View result
-                </button>
-
-            </div>
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-5">
-                <div class="navbar-right">
-
-                    <button type="button" class="btn btn-link navbar-btn"><span class="glyphicon glyphicon-cog"></span></button>
-
-
-                </div>
-            </div>
-        </div>
-    </nav>
-
-    <div id="spintext-error" class="alert alert-danger fade" role="alert">
-    </div>
-
     <textarea id="spintext-input" class="form-control"></textarea>
 
     <nav class="navbar navbar-default navbar-fixed-bottom navbar-xs">
@@ -68,16 +68,16 @@
             <div class="navbar-collapse">
 
                 <p class="navbar-text">
-                    <label for="spintext-variants" class="sr-only">Variationer:</label>
+                    <label for="spintext-variants" class="sr-only">Variations:</label>
                     <span id="spintext-variants" title="The amount of variations this input can make" data-toggle="tooltip" data-placement="top"></span>
                 </p>
                 <p class="navbar-text">
-                    <label for="spintext-min-words" class="sr-only">Min size:</label>
+                    <label for="spintext-min-words" class="sr-only">Min words:</label>
                     <span id="spintext-min-words" title="Minimum word count, input can result in" data-toggle="tooltip" data-placement="top"></span>
                 </p>
 
                 <p class="navbar-text">
-                    <label for="spintext-max-words" class="sr-only">Max size:</label>
+                    <label for="spintext-max-words" class="sr-only">Max words:</label>
                     <span id="spintext-max-words" title="The Maximum word count, input can result in" data-toggle="tooltip" data-placement="top"></span>
                 </p>
 
@@ -116,24 +116,16 @@
 
 
     <div class="modal fade" id="spintext-settings-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
+a        <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">Settings</h4>
                 </div>
                 <div class="modal-body">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" value="">
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                            <input type="text" style="width:30px;" value="" disabled>
-                            Option two is disabled
-                        </label>
+                    <div class="form-group">
+                        <label for="settingsSeed">Seed</label>
+                        <input type="email" class="form-control" id="settingsSeed" placeholder="" value="0">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -152,8 +144,8 @@
 
 
 
+    <!-- test tabs ... v99-->
     <!--<script src="http://rubaxa.github.io/Sortable/Sortable.js"></script>
-
     <script type="text/javascript">
 
         $(document).ready(function () {

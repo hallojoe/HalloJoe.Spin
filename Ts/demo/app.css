@@ -16,9 +16,26 @@
     padding-bottom: 120px;
 }
 
+#spintext-error {
+    width:100%;
+    border-radius:0;
+    border-style:solid none;
+    position:absolute;
+    top:0px;
+    left:0;
+}
+.yellow {
+background-color:yellow;
+color:#000;
+}
+.blue {
+background-color:blue;
+color:#fff;
+}
+
 .tooltip .tooltip-inner { border-radius:0}
 
-.navbar { border-radius:0}
+.navbar { border-radius:0;margin:0;}
 .navbar .sr-only { display:none;}
 .navbar-xs { min-height:22px;} 
 .navbar-xs .navbar-brand{ padding: 2px 8px;font-size: 14px;line-height: 14px; } 
