@@ -48,7 +48,7 @@ Console.WriteLine("Variations: {0}, Min. words: {1}, Max. words: {2}", _
 
 (The MIT License)
 
-Copyright (c) 2014 - 2017 Casper Korsgaard <hallojoe.dk>
+Copyright (c) 2014 - 2017 HalloJoe <hallojoe.dk>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
