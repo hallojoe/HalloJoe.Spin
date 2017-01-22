@@ -21,8 +21,8 @@
         } 
 
         public toStructuredString(): string {
-            var sb: StringBuilder = new SpinTexter.StringBuilder();
-            var first: boolean = true;
+            let sb: StringBuilder = new SpinTexter.StringBuilder();
+            let first: boolean = true;
             sb.append("{");
             this.forEach(function (el) {
                 if (first) first = false;
