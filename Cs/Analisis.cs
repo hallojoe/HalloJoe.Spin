@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HalloJoe.Spin
 {
-    class Analisis
+    class Analysis
     {
         // PatternName: a pattern name should really reflect the meaning of what it is abstracting. It should be simple so that one can refer to it during analysis.
         public string PatternName => "SpinTexter";
