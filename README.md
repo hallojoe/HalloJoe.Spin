@@ -1,12 +1,15 @@
-HalloJoe.Spin
+   This repo is archived
+   # Alive version https://github.com/hallojoe/SpinText
+
+## HalloJoe.Spin
 ==================
 A `{spin|spin text|text spinner|spintax}` component, that allow you to spin text, calculate variations and count min/max word counts.
 
-About
+## About
 -----------
 This was originally written in VB, then converted to C# and TypeScript.
 
-Features
+## Features
 -----------
 * Supports both flat and nested spin text
 * Syntax error handling (Locate missing opening or closing bracket)
@@ -48,7 +51,7 @@ Console.WriteLine("Variations: {0}, Min. words: {1}, Max. words: {2}", _
 
 (The MIT License)
 
-Copyright (c) 2014 - 2017 HalloJoe <hallojoe.dk>
+Copyright (c) 2014 - 2099 HalloJoe <hallojoe.dk>
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
